@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+   <table align="center" border="1px" width="100%">
+       <h3 align="center">正版软件信息展示</h3>
+       <th>厂商</th>
+       <th>软件名称</th>
+       <th>预算部门</th>
+       <th>购买数量</th>
+       <th>授权方式</th>
+       <th>采购日期</th>
+       <th>截止日期</th>
+       <th>对接人</th>
+
+       {% for item in data %}
+       <tr>
+           <td>{{ item.vendor }}</td>
+           <td>{{ item.soft_name}}</td>
+           <td>{{ item.dep}}</td>
+           <td>{{ item.pur_num}}</td>
+           <td>{{ item.autho_type}}</td>
+           <td>{{ item.pur_date}}</td>
+           <td>{{ item.expired_date}}</td>
+           <td>{{ item.demander }}</td>
+       </tr>
+       {% endfor %}
+
+   </table>
+
+
+</body>
+</html>
