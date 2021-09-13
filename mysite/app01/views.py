@@ -3,11 +3,6 @@ import pymysql
 from app01.models import Assets
 # Create your views here.
 
-
-def index(request):
-
-    return render(request, 'index.html')
-
 '''
 def show(request):
     db = pymysql.connect(host='127.0.0.1', user='root', password='momo2021', database='momo')

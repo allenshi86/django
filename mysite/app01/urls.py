@@ -22,9 +22,7 @@ from django.views.generic import RedirectView
 from app01 import views
 
 urlpatterns = [
-    path('', views.index, name='index'),
     path('show', views.show, name='show'),
-    path('app01', views.show, name='show'),
 ]
 
 

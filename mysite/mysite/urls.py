@@ -21,20 +21,15 @@ from django.views.generic import RedirectView
 
 from django.conf import settings
 from django.conf.urls.static import static
-
+from app01 import views as app01_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('show/', app01_views.show,name='app01_views.show'),
+    path('',app01_views.show,name='app01_views.show'),
 ]
 
 
-
-
-urlpatterns += [
-    path('', include('app01.urls')),
-    path('app01/', include('app01.urls')),
-
-]
 '''
 urlpatterns += [
     path('', RedirectView.as_view(url='/app01/')),
