@@ -1,77 +1,52 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
+<style type="text/css">
+     .button1 {
+        width: 150px;
+        padding:8px;
+        background: #F7CA18;
+        border-color: #357ebd;
+        color: #fff;
+        border-radius: 10px; /* future proofing */
+        -khtml-border-radius: 10px; /* for old Konqueror browsers */
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid transparent;
+        font-weight: 400;
+        font-size:125%;
+        margin-left:150px;
+        margin-top:450px
+      }
+     .button2{
+        width: 150px;
+        padding:8px;
+        background: #F7CA18;
+        border-color: #357ebd;
+        color: #fff;
+        border-radius: 10px; /* future proofing */
+        -khtml-border-radius: 10px; /* for old Konqueror browsers */
+        text-align: center;
+        vertical-align: middle;
+        border: 1px solid transparent;
+        font-weight: 400;
+        font-size:125%;
+        margin-left:30px;
+        margin-top:450px
+
+      }
+</style>
+
 <head>
     <meta charset="UTF-8">
-    <title>mysite</title>
-    <style>
-        table {
-            table-layout: fixed;
-            border-collapse: collapse;
-            border-spacing: 3px 3px ;
-        }
-        label {
-            font-size: 13px;
-        }
-        th,td {
-            padding: 20px；
-        }
-        caption {
-            padding: 20px;
-        }
-    </style>
+    <title>MOMO-IT-Platform</title>
 </head>
-<body>
-    <form action="/views/add_info/" method="post" name="add_info">
-        {% csrf_token %}
-        <table align="center" width="700" border="1" >
-            <caption>信息提交表</caption>
-            <td>
-        <div>
-            <label for="vendor"><font color="#FF0000">*</font> 厂商:</label>
-            <select id="vendor" name="vendor" required="required">
-                            <option value="default" selected>--请选择--</option>
-                            <option value="microsoft" >Microsoft</option>
-                            <option value="adobe" >Adobe</option>
-                            <option value="others" >其他</option>
-            </select>
-            &nbsp;&nbsp;&nbsp;
-            <label for="soft_name"><font color="#FF0000">*</font> 软件名称:</label>
-            <input size="10" type="text" id="soft_name" required="required">
-            &nbsp;&nbsp;&nbsp;
-            <label for="pur_num"><font color="#FF0000">*</font>购买数量:</label>
-            <input size="5" type="text" id="pur_num" required="required">
-
-        </div>
-                &nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;
-        <div>
-            <label for="lic_type"><font color="#FF0000">*</font> 授权类型:</label>
-            <select id="lic_type" name="lic_type" required="required">
-                <option value="default" selected>--请选择--</option>
-                <option value="forever" >永久授权</option>
-                <option value="temp" >非永久授权</option>
-            </select>
-            <label for="pur_time" ><font color="#FF0000">*</font> 购买时间:</label>
-            <input  type="date" id="pur_time" required="required">
-            <label for="valid_time">到期时间:</label>
-            <input size="5" type="date" id="valid_time">
-        </div>
-                &nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;
-                &nbsp;&nbsp;&nbsp;
-                <div>
-                    <label for="depart"><font color="#FF0000">*</font> 预算部门:</label>
-                   <input size="5" type="text" id="depart" required="required">
-                </div>
-                <div align="center">
-
-                    <input type="submit" value="提交" >
-                </div>
-                </td>
-
-        </table>
-
-    </form>
+<body style="background-image: url({% static 'images/home-background.jpg' %});background-attachment: fixed ;background-size:100% 100%;background-repeat:no-repeat;">
+         <button type="button" class="button1" onclick="window.location.href = '/screen_show/'">无线投屏管理</button>
+         <button type="button" class="button2" onclick="window.location.href = '/admin/'">正版软件管理</button>
+         <button type="button" class="button2" onclick="window.location.href = '/assets_show/'">正版软件查询</button>
+</body>
+</html>
 
 
 

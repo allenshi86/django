@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>投屏日志查询</title>
+</head>
+<script>
+    window.onload=function(){
+	var tfrow = document.getElementById('Cast_Screen_Show').rows.length;
+	var tbRow=[];
+	for (var i=1;i<tfrow;i++) {
+		tbRow[i]=document.getElementById('Cast_Screen_Show').rows[i];
+		tbRow[i].onmouseover = function(){
+		this.style.backgroundColor = '#ffffff';
+		};
+		tbRow[i].onmouseout = function() {
+		  this.style.backgroundColor = '#d4e3e5';
+		};
+	}
+};
+</script>
+<style>
+         table.Cast_Screen_Show_table{
+            font-size:12px;
+            color:#333333;
+            word-wrap: break-word;
+            width: 60%;
+            margin: 0 auto;
+            border-width: 1px;
+            border-color: #729ea5;
+            border-collapse: collapse;
+            text-align: center;
+         }
+         table.Cast_Screen_Show_table th{
+             font-size:12px;
+             background-color:#acc8cc;
+             border-width: 1px;
+             padding: 3px;
+             border-style: solid;
+             border-color: #729ea5;
+             text-align:left;
+         }
+         table.Cast_Screen_Show_table tr{
+             background-color:#d4e3e5;
+         }
+         table.Cast_Screen_Show_table td{
+            font-size:12px;
+            border-width: 1px;
+            padding: 3px;
+            border-style: solid;
+            border-color: #729ea5;
+            text-align: left;
+         }
+</style>
+<body>
+    <form action="time" method="post">
+<!--        {% csrf_token %}
+-->
+            <h3 align="center">投屏设备日志展示</h3>
+               <table id="Cast_Screen_Show" class="Cast_Screen_Show_table" >
+               <thead>
+               <tr style="background: none">
+                    <td colspan="11" style="border-right: none;border-top: none;border-left: none;text-align: right">
+                     <a href="{% url 'index' %}" style="text-decoration: none">返回首页</a>
+               </tr>
+                  </td>
+                  <tr align="">
+                     <th>设备名称</th>
+                     <th>抓取时间</th>
+                     <th>终端IP</th>
+                     <th>终端名称</th>
+                     <th>终端连接方式</th>
+                     <th>投屏持续时长</th>
+                     </tr>
+                </thead>
+                <tbody>
+                      {% for Screenlog_info in data %}
+                        <tr>
+                            <td hidden="hidden">{{ Screenlog_info.ID }}</td>
+                            <td>{{ Screenlog_info.Device_Name }}</td>
+                            <td>{{ Screenlog_info.Information_Capture_Time }}</td>
+                            <td>{{ Screenlog_info.Terminal_IP }}</td>
+                            <td>{{ Screenlog_info.Terminal_Name }}</td>
+                            <td>{{ Screenlog_info.Terminal_Connection_method }}</td>
+                            <td>{{ Screenlog_info.Casting_Time }}</td>
+                          </tr>
+                       {% endfor %}
+                 </tbody>
+
+           </table>
+    <div style="text-align: center" >
+        <table></table>
+    <td>开始时间</td>
+    <input type="datetime-local" step="1" name="Star_time" value="{{ time1 }}">
+    <td>结束时间</td>
+    <input type="datetime-local" step="1" name="End_time"  value="{{ time2 }}">
+    <td>基于设备名称查询</td>
+    <input list="selectList" name="selectList" value={{ device}}  >
+    <datalist id="selectList">
+             <option value="塔1-16层-1会">
+             <option value="塔1-16层-2会" >
+             <option value="塔1-16层-3会">
+             <option value="塔1-16层-4会">
+             <option value="塔1-16层-5会">
+             <option value="塔1-16层-6会">
+             <option value="塔1-16层-7会">
+             <option value="塔1-16层-8会">
+             <option value="塔1-16层-9会">
+             <option value="塔1-16层-10会">
+             <option value="塔1-16层-11会">
+             <option value="塔1-16层-13会">
+             <option value="塔2-11层-21会">
+             <option value="塔2-11层-27会">
+             <option value="塔2-11层-29会">
+             <option value="塔2-11层-32会">
+             <option value="塔2-11层-CTO">
+             <option value="塔2-11层-JW">
+             <option value="塔2-19层-13会">
+             <option value="塔2-19层-14会">
+             <option value="塔2-19层-15会">
+             <option value="塔2-19层-16会">
+             <option value="塔2-19层-17会">
+             <option value="塔2-20层-1会">
+             <option value="塔2-20层-3会">
+             <option value="塔2-20层-4会">
+             <option value="塔2-20层-5会">
+             <option value="塔2-20层-6会">
+             <option value="塔2-20层-7会">
+             <option value="塔2-20层-8会">
+             <option value="塔2-20层-9会">
+             <option value="塔2-20层-11会">
+             <option value="塔2-20层-12会">
+             <option value="塔2-20层-18会">
+             <option value="塔2-20层-CFO">
+             <option value="塔2-20层-TY">
+             <option value="塔2-20层-WL">
+             <option value="塔3-19层-8会">
+             <option value="塔3-19层-9会">
+             <option value="塔3-19层-10会">
+             <option value="塔3-19层-12会">
+             <option value="塔3-19层-13会">
+             <option value="塔3-19层-DW">
+             <option value="塔3-30层-1会">
+             <option value="塔3-30层-2会">
+             <option value="塔3-30层-3会">
+             <option value="塔3-30层-4会">
+             <option value="塔3-30层-5会">
+             <option value="塔3-30层-6会">
+             <option value="塔3-30层-7会">
+    </datalist>
+    <input type="submit" value="查询" />
+    </div>
+    </form>
+</body>
+</html>
